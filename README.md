@@ -54,7 +54,6 @@ After the **[basic steps](https://github.com/Wolvarun9295/Spark-Elasticsearch-5M
 ```
 spark.stop()
 ```
-<img src="https://github.com/Wolvarun9295/Spark-Elasticsearch-5MilData/blob/master/Screenshots/basics-steps.png"></img>
 #
 ### PySpark + Elasticsearch Task:
 So for doing this task using PySpark and Elasticsearch, first we'll extract the Elasticsearch tar file and need to add a few extra libraries to the basic steps we just performed as follows
@@ -107,9 +106,10 @@ spark.stop()
 #
 ### Using Jupyter Notebook or Python Script:
 This task has been done in Jupyter Notebook as well as in Python Script.</br>
-The code in Jupyter Notebook is straightforward and can be run sequentially as follows:
+The code in Jupyter Notebook is straightforward and can be run sequentially and can be seen rendered on GitHub.
 </br>
 The code in Python Script is similar but uses class and methods for respective tasks and runs as follows:
+<img src="https://github.com/Wolvarun9295/Spark-Elasticsearch-5MilData/blob/master/Screenshots/pyfile.png"></img>
 #
 ## References:
 - [A Basic Guide To Elasticsearch Aggregations](https://logz.io/blog/elasticsearch-aggregations/)
