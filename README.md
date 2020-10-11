@@ -1,4 +1,4 @@
-# Spark-Elasticsearch-5MilData
+# Processing huge data with Spark and Elasticsearch
 This task has been performed on 5 million records CSV data using PySpark and Elastisearch (No Logstash!). I performed this task in 2 ways:
 1. Using only **PySpark**
 2. Using **PySpark and Elasticsearch**.
