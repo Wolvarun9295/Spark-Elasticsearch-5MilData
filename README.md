@@ -54,6 +54,7 @@ After the **[basic steps](https://github.com/Wolvarun9295/Spark-Elasticsearch-5M
 ```
 spark.stop()
 ```
+<img src="Screenshots/basics-steps"/>
 #
 ### PySpark + Elasticsearch Task:
 So for doing this task using PySpark and Elasticsearch, first we'll extract the Elasticsearch tar file and need to add a few extra libraries to the basic steps we just performed as follows
