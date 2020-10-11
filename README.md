@@ -12,11 +12,11 @@ $ sudo apt-get install python3-pip
 - [Java JDK8 (required for Spark) and JDK11 (required for Elasticsearch)](https://jdk.java.net)
 - [Apache Spark (v2.4.x preferable to avoid compatibility issues)](https://spark.apache.org/downloads.html) and also install the pyspark using pip
 ```
-$sudo pip3 install pyspark
+$ sudo pip3 install pyspark
 ```
 - [Elasticsearch](https://www.elastic.co/downloads/elasticsearch) and also install the elasticsearch using pip
 ```
-$sudo pip3 install elasticsearch
+$ sudo pip3 install elasticsearch
 ```
 - [ES Hadoop jar](https://www.elastic.co/downloads/hadoop)
 - [5 million dataset](http://eforexcel.com/wp/downloads-16-sample-csv-files-data-sets-for-testing/)
@@ -64,10 +64,10 @@ from pprint import pprint
 ```
 1. First we will have to start the Elasticsearch from the terminal.
 ```
-$cd /path/to/elasticsearch
-$./bin/elasticsearch # to see all the details
+$ cd /path/to/elasticsearch
+$ ./bin/elasticsearch # to see all the details
 ---OR---
-$./bin/elasticsearh -d # to start elasticsearch as deamon process
+$ ./bin/elasticsearh -d # to start elasticsearch as deamon process
 ```
 2. Next extract the **ES Hadoop zip** folder and copy the **elasticsearch-hadoop-x.jar** to the spark **jars** folder.
 ```
