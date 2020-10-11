@@ -104,7 +104,7 @@ es.transport.close()
 spark.stop()
 ```
 #
-## Using Jupyter Notebook or Python Script:
+### Using Jupyter Notebook or Python Script:
 This task has been done in Jupyter Notebook as well as in Python Script. 
 #
 ## References:
