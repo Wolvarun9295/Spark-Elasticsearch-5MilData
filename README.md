@@ -22,7 +22,7 @@ $ sudo pip3 install elasticsearch
 - **[5million records dataset](http://eforexcel.com/wp/downloads-16-sample-csv-files-data-sets-for-testing/)**
 #
 ## Steps to run the code
-- ### Basic Steps:
+### Basic Steps:
 As this task has been performed by two types, the first few steps are similar and then they branch out differently. So in the basics steps, the process of loading the data with PySpark into a dataframe has to be done. The dataset used for this task was already clean, so no data cleaning procedures had to be performed. But in some cases, this might be a necessicity as in most cases the data is noisy and dirty, so perform the steps as required by your dataset.
 
 1. First import the necessary libraries required for the task.
@@ -49,7 +49,7 @@ df.types
 df.show()
 ```
 #
-- ### PySpark Task:
+### PySpark Task:
 After the **[basic steps](https://github.com/Wolvarun9295/Spark-Elasticsearch-5MilData#basic-steps)** have been performed, the task using PySpark is fairly easy to do since we have to apply groupby and aggregation functions using PySpark. After completion of the task **make sure to stop the SparkSession**.
 ```
 spark.stop()
