@@ -71,8 +71,8 @@ $ ./bin/elasticsearh -d # to start elasticsearch as deamon process
 ```
 2. Next extract the **ES Hadoop zip** folder and copy the **elasticsearch-hadoop-x.jar** to the spark **jars** folder.
 ```
-$cd /es-hadoop/dist
-$cp elasticsearch-hadoop-x.jar /path/to/spark/jars
+$ cd /es-hadoop/dist
+$ cp elasticsearch-hadoop-x.jar /path/to/spark/jars
 ```
 3. Next check if Elasticsearch is successfully reachable or not by creating a requests object.
 ```
