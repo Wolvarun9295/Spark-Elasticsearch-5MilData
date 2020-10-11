@@ -105,7 +105,10 @@ spark.stop()
 ```
 #
 ### Using Jupyter Notebook or Python Script:
-This task has been done in Jupyter Notebook as well as in Python Script. 
+This task has been done in Jupyter Notebook as well as in Python Script.</br>
+The code in Jupyter Notebook is straightforward and can be run sequentially as follows:
+</br>
+The code in Python Script is similar but uses class and methods for respective tasks and runs as follows:
 #
 ## References:
 - [A Basic Guide To Elasticsearch Aggregations](https://logz.io/blog/elasticsearch-aggregations/)
