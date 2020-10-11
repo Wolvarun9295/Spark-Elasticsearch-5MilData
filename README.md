@@ -9,17 +9,17 @@ This task has been performed on 5 million records CSV data using PySpark and Ela
 $ sudo apt-get install python3
 $ sudo apt-get install python3-pip
 ```
-- [Java JDK8 (required for Spark) and JDK11 (required for Elasticsearch)](https://jdk.java.net)
-- [Apache Spark (v2.4.x preferable to avoid compatibility issues)](https://spark.apache.org/downloads.html) and also install the pyspark using pip
+- **[Java JDK8](https://jdk.java.net)** (required for **Spark**) and [JDK11](https://jdk.java.net) (required for **Elasticsearch**)
+- **[Apache Spark](https://spark.apache.org/downloads.html)** (v2.4.x preferable to avoid compatibility issues) and also install the PySpark using pip
 ```
 $ sudo pip3 install pyspark
 ```
-- [Elasticsearch](https://www.elastic.co/downloads/elasticsearch) and also install the elasticsearch using pip
+- **[Elasticsearch](https://www.elastic.co/downloads/elasticsearch)** and also install the elasticsearch using pip
 ```
 $ sudo pip3 install elasticsearch
 ```
-- [ES Hadoop jar](https://www.elastic.co/downloads/hadoop)
-- [5 million dataset](http://eforexcel.com/wp/downloads-16-sample-csv-files-data-sets-for-testing/)
+- **[ES Hadoop jar](https://www.elastic.co/downloads/hadoop)**
+- **[5million records dataset](http://eforexcel.com/wp/downloads-16-sample-csv-files-data-sets-for-testing/)**
 #
 ## Steps to run the tasks
 ### Basic Steps:
