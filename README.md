@@ -9,7 +9,7 @@ This task has been performed on 5 million records CSV data using PySpark and Ela
 $ sudo apt-get install python3
 $ sudo apt-get install python3-pip
 ```
-- **[Java JDK8](https://jdk.java.net)** (required for **Spark**) and [JDK11](https://jdk.java.net) (required for **Elasticsearch**)
+- **[Java JDK8](https://jdk.java.net)** (required for **Spark**) and **[JDK11](https://jdk.java.net)** (required for **Elasticsearch**)
 - **[Apache Spark](https://spark.apache.org/downloads.html)** (v2.4.x preferable to avoid compatibility issues) and also install the PySpark using pip
 ```
 $ sudo pip3 install pyspark
@@ -66,7 +66,9 @@ from pprint import pprint
 ```
 $ cd /path/to/elasticsearch
 $ ./bin/elasticsearch # to see all the details
+
 ---OR---
+
 $ ./bin/elasticsearh -d # to start elasticsearch as deamon process
 ```
 2. Next extract the **ES Hadoop zip** folder and copy the **elasticsearch-hadoop-x.jar** to the spark **jars** folder.
