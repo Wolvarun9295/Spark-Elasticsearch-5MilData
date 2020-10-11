@@ -56,7 +56,7 @@ spark.stop()
 ```
 #
 ### PySpark + Elasticsearch Task:
-So for doing this task using PySpark and Elasticsearch, we need to add a few extra libraries to the basic steps we just performed as follows
+So for doing this task using PySpark and Elasticsearch, first we'll extract the Elasticsearch tar file and need to add a few extra libraries to the basic steps we just performed as follows
 ```
 from elasticsearch import Elasticsearch
 import requests
