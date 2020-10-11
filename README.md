@@ -50,7 +50,7 @@ df.show()
 ```
 #
 ### PySpark Task:
-After the basics steps have been performed, the task using PySpark is fairly easy to do since we have to apply groupby and aggregation functions using PySpark. After completion of the task **make sure to stop the SparkSession**.
+After the **[basic steps](https://github.com/Wolvarun9295/Spark-Elasticsearch-5MilData#basic-steps)** have been performed, the task using PySpark is fairly easy to do since we have to apply groupby and aggregation functions using PySpark. After completion of the task **make sure to stop the SparkSession**.
 ```
 spark.stop()
 ```
@@ -81,7 +81,7 @@ $ cp elasticsearch-hadoop-x.jar /path/to/spark/jars
 res = requests.get('http://localhost:9200')
 pprint(res.content)
 ```
-4. After the the **[basic steps](https://github.com/Wolvarun9295/Spark-Elasticsearch-5MilData#basic-steps)** have been performed successfully, we need to write the PySpark dataframe to the Elasticsearch directly in much less time without the need of Logstash since Logstash is time and memory hog.
+4. After the **[basic steps](https://github.com/Wolvarun9295/Spark-Elasticsearch-5MilData#basic-steps)** have been performed successfully, we need to write the PySpark dataframe to the Elasticsearch directly in much less time without the need of Logstash since Logstash is time and memory hog.
 ```
 df.write.format(
     "org.elasticsearch.spark.sql"
