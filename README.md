@@ -1,4 +1,12 @@
 # Processing huge data with Spark and Elasticsearch
+This task had the following questions to solve on huge data:
+
+**Task 1:** Count the number of employees in each County, Region and City<br/>
+**Task 2:** Generate Employee Summary<br/>
+**Task 3:** Generate employee summary and ordering by Gender and Salary<br/>
+**Task 4:** Summerize the number of employee joined and hikes granted based on month<br/>
+**Task 5:** Generate employee summary and ordering by Salary
+
 This task has been performed on 5 million records CSV data using PySpark and Elastisearch (No Logstash!). I performed this task in 2 ways:
 1. Using only **PySpark**
 2. Using **PySpark and Elasticsearch**.
@@ -106,11 +114,9 @@ spark.stop()
 #
 ### Using Jupyter Notebook or Python Script:
 This task has been done in Jupyter Notebook as well as in Python Script.
-</br>
-</br>
+
 The code in Jupyter Notebook is straightforward and can be run sequentially and can be seen rendered on GitHub.
-</br>
-</br>
+
 The code in Python Script is similar but uses class and methods for respective tasks and runs as follows:
 <img src="https://github.com/Wolvarun9295/Spark-Elasticsearch-5MilData/blob/master/Screenshots/pyfile.png"></img>
 #
