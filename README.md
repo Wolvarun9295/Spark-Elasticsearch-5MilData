@@ -1,11 +1,9 @@
 # Spark-Elasticsearch-5MilData
-
 This task has been performed on 5 million records CSV data using PySpark and Elastisearch (No Logstash!). I performed this task in 2 ways:
 1. Using only PySpark
 2. Using PySpark and Elasticsearch.
 #
 ## Prerequisites:
-#
 - Python3 (less than Python3.8 to avoid compatibility issues)
 ```
 $ sudo apt-get install python3
@@ -24,7 +22,6 @@ $sudo pip3 install elasticsearch
 - [5 million dataset](http://eforexcel.com/wp/downloads-16-sample-csv-files-data-sets-for-testing/)
 #
 ## Steps to run the tasks
-#
 ### Basic Steps:
 #
 As this task has been performed by two types, the first few steps are similar and then they branch out differently. So in the basics steps, the process of loading the data with PySpark into a dataframe has to be done. The dataset used for this task was already clean, so no data cleaning procedures had to be performed. But in some cases, this might be a necessicity as in most cases the data is noisy and dirty, so perform the steps as required by your dataset.
@@ -54,7 +51,6 @@ df.show()
 ```
 #
 ### PySpark Task:
-#
 After the basics steps have been performed, the task using PySpark is fairly easy to do since we have to apply groupby and aggregation functions using PySpark. After completion of the task make sure to stop the SparkSession.
 ```
 spark.stop()
@@ -108,7 +104,6 @@ spark.stop()
 ```
 #
 ## References:
-#
 - [A Basic Guide To Elasticsearch Aggregations](https://logz.io/blog/elasticsearch-aggregations/)
 - [Indexing into Elasticsearch using Spark — code snippets](https://medium.com/@akkidx/indexing-into-elasticsearch-using-spark-code-snippets-55eabc753272)
 - [Python Elasticsearch Client API Documentation](https://elasticsearch-py.readthedocs.io/en/master/index.html)
