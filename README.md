@@ -23,7 +23,6 @@ $sudo pip3 install elasticsearch
 #
 ## Steps to run the tasks
 ### Basic Steps:
-#
 As this task has been performed by two types, the first few steps are similar and then they branch out differently. So in the basics steps, the process of loading the data with PySpark into a dataframe has to be done. The dataset used for this task was already clean, so no data cleaning procedures had to be performed. But in some cases, this might be a necessicity as in most cases the data is noisy and dirty, so perform the steps as required by your dataset.
 
 1. First import the necessary libraries required for the task.
