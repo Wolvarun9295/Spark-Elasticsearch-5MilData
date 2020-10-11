@@ -7,7 +7,7 @@ This task had the following questions to solve on huge data:
 **Task 4:** Summerize the number of employee joined and hikes granted based on month<br/>
 **Task 5:** Generate employee summary and ordering by Salary
 
-This task has been performed on 5 million records CSV data using PySpark and Elastisearch (No Logstash!). I performed this task in 2 ways:
+It has been performed on 5 million records CSV data using PySpark and Elastisearch (No Logstash!). I performed this task in 2 ways:
 1. Using only **PySpark**
 2. Using **PySpark and Elasticsearch**.
 #
