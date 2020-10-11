@@ -105,8 +105,11 @@ spark.stop()
 ```
 #
 ### Using Jupyter Notebook or Python Script:
-This task has been done in Jupyter Notebook as well as in Python Script.</br>
+This task has been done in Jupyter Notebook as well as in Python Script.
+</br>
+</br>
 The code in Jupyter Notebook is straightforward and can be run sequentially and can be seen rendered on GitHub.
+</br>
 </br>
 The code in Python Script is similar but uses class and methods for respective tasks and runs as follows:
 <img src="https://github.com/Wolvarun9295/Spark-Elasticsearch-5MilData/blob/master/Screenshots/pyfile.png"></img>
