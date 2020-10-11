@@ -1,10 +1,10 @@
 # Spark-Elasticsearch-5MilData
 This task has been performed on 5 million records CSV data using PySpark and Elastisearch (No Logstash!). I performed this task in 2 ways:
-1. Using only PySpark
-2. Using PySpark and Elasticsearch.
+1. Using only **PySpark**
+2. Using **PySpark and Elasticsearch**.
 #
 ## Prerequisites:
-- Python3 (less than Python3.8 to avoid compatibility issues)
+- Python3 (**less than Python3.8** to avoid compatibility issues)
 ```
 $ sudo apt-get install python3
 $ sudo apt-get install python3-pip
@@ -30,7 +30,7 @@ As this task has been performed by two types, the first few steps are similar an
 findspark.init("/usr/local/spark/") # finding locally installed spark
 from pyspark.sql import SparkSession, functions as func
 ```
-2. Next create a SparkSession.
+2. Next create a **SparkSession**.
 ```
 spark = SparkSession.builder.appName('task').getOrCreate()
 ```
@@ -50,7 +50,7 @@ df.show()
 ```
 #
 ### PySpark Task:
-After the basics steps have been performed, the task using PySpark is fairly easy to do since we have to apply groupby and aggregation functions using PySpark. After completion of the task make sure to stop the SparkSession.
+After the basics steps have been performed, the task using PySpark is fairly easy to do since we have to apply groupby and aggregation functions using PySpark. After completion of the task **make sure to stop the SparkSession**.
 ```
 spark.stop()
 ```
@@ -65,11 +65,11 @@ from pprint import pprint
 1. First we will have to start the Elasticsearch from the terminal.
 ```
 $cd /path/to/elasticsearch
-$./bin/elasticsearch # to see all the details or
-
+$./bin/elasticsearch # to see all the details
+---OR---
 $./bin/elasticsearh -d # to start elasticsearch as deamon process
 ```
-2. Next extract the ES Hadoop zip folder and copy the elasticsearch-hadoop-x.jar to the spark jars folder.
+2. Next extract the **ES Hadoop zip** folder and copy the **elasticsearch-hadoop-x.jar** to the spark **jars** folder.
 ```
 $cd /es-hadoop/dist
 $cp elasticsearch-hadoop-x.jar /path/to/spark/jars
@@ -79,7 +79,7 @@ $cp elasticsearch-hadoop-x.jar /path/to/spark/jars
 res = requests.get('http://localhost:9200')
 pprint(res.content)
 ```
-4. After the the basic steps have been performed successfully, we need to write the PySpark dataframe to the Elasticsearch directly in much less time without the need of Logstash since Logstash is time and memory hog.
+4. After the the [basic steps](#basic-steps) have been performed successfully, we need to write the PySpark dataframe to the Elasticsearch directly in much less time without the need of Logstash since Logstash is time and memory hog.
 ```
 df.write.format(
     "org.elasticsearch.spark.sql"
@@ -95,8 +95,8 @@ df.write.format(
 ```
 es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
 ```
-6. While performing the tasks with elasticsearch, when performing aggregation operations on strings, we need to use ".keyword" after the string columns that need to be used.
-7. And after the tasks have been successfully performed, close the connection to Elasticsearch and stop the SparkSession
+6. During the tasks with elasticsearch, when performing aggregation operations on strings, we need to use "**.keyword**" after the string columns that need to be used since string columns aren't allowed to be iterated by default.
+7. And after the tasks have been successfully performed, **close the connection to Elasticsearch and stop the SparkSession**.
 ```
 es.transport.close()
 spark.stop()
@@ -104,7 +104,7 @@ spark.stop()
 #
 ## References:
 - [A Basic Guide To Elasticsearch Aggregations](https://logz.io/blog/elasticsearch-aggregations/)
-- [Indexing into Elasticsearch using Spark — code snippets](https://medium.com/@akkidx/indexing-into-elasticsearch-using-spark-code-snippets-55eabc753272)
+- [Indexing into Elasticsearch using Spark - code snippets](https://medium.com/@akkidx/indexing-into-elasticsearch-using-spark-code-snippets-55eabc753272)
 - [Python Elasticsearch Client API Documentation](https://elasticsearch-py.readthedocs.io/en/master/index.html)
 - [23 Useful Elasticsearch Example Queries](https://dzone.com/articles/23-useful-elasticsearch-example-queries)
 - [Elasticsearch Tutorial for beginners - TechieLifestyle](https://www.youtube.com/playlist?list=PLGZAAioH7ZlO7AstL9PZrqalK0fZutEXF)
