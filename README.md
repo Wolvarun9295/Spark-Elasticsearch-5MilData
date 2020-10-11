@@ -10,7 +10,7 @@ $ sudo apt-get install python3
 $ sudo apt-get install python3-pip
 ```
 - **[Java JDK8](https://jdk.java.net)** (required for **Spark**) and **[JDK11](https://jdk.java.net)** (required for **Elasticsearch**)
-- **[Apache Spark](https://spark.apache.org/downloads.html)** (v2.4.x preferable to avoid compatibility issues) and also install the PySpark using pip
+- **[Apache Spark](https://spark.apache.org/downloads.html)** (**v2.4.x** preferable to avoid compatibility issues) and also install the PySpark using pip
 ```
 $ sudo pip3 install pyspark
 ```
