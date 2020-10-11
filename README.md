@@ -104,6 +104,9 @@ es.transport.close()
 spark.stop()
 ```
 #
+## Using Jupyter Notebook or Python Script:
+This task has been done in Jupyter Notebook as well as in Python Script. 
+#
 ## References:
 - [A Basic Guide To Elasticsearch Aggregations](https://logz.io/blog/elasticsearch-aggregations/)
 - [Indexing into Elasticsearch using Spark - code snippets](https://medium.com/@akkidx/indexing-into-elasticsearch-using-spark-code-snippets-55eabc753272)
