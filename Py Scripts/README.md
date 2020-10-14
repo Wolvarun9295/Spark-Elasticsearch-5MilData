@@ -17,6 +17,11 @@ The below screenshots show the output of the tasks performed:
 **No. of Employess per City:**<br/>
 <img src=https://github.com/Wolvarun9295/Spark-Elasticsearch-5MilData/blob/master/Screenshots/esT13.png></img><br/>
 **Task 2:** Generate Employee Summary<br/>
+<img src=https://github.com/Wolvarun9295/Spark-Elasticsearch-5MilData/blob/master/Screenshots/esT2.png></img><br/>
 **Task 3:** Generate employee summary and ordering by Gender and Salary<br/>
+<img src=https://github.com/Wolvarun9295/Spark-Elasticsearch-5MilData/blob/master/Screenshots/esT3.png></img><br/>
 **Task 4:** Summerize the number of employee joined and hikes granted based on month<br/>
+<img src=https://github.com/Wolvarun9295/Spark-Elasticsearch-5MilData/blob/master/Screenshots/esT41.png></img><br/>
+<img src=https://github.com/Wolvarun9295/Spark-Elasticsearch-5MilData/blob/master/Screenshots/esT42.png></img><br/>
 **Task 5:** Generate employee summary and ordering by Salary
+<img src=https://github.com/Wolvarun9295/Spark-Elasticsearch-5MilData/blob/master/Screenshots/esT5.png></img><br/>
