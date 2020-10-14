@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # ### Finding locally installed Spark and importing PySpark libraries
+from itertools import count
+
 import findspark
 
 findspark.init("/usr/local/spark/")
@@ -11,8 +13,8 @@ class sparkTask(object):
         try:
             # ### Reading 5 million data CSV with Spark by loading the file
             self.df = spark.read.format("csv").option("header", "true").load(filepath).fillna(0)[
-                "Emp ID", "Month Name of Joining", "Last Name", "Gender", "E Mail", "SSN", "County", "State", "Region", "City", "Zip", "Salary", func.regexp_replace(
-                    func.col("Last % Hike"), "%", "").alias("Salary Hike")]
+                "Emp ID", "First Name", "Last Name", "Gender", "E Mail", "Month Name of Joining", "SSN", "County", "State", "Region", "City", "Zip", "Salary", func.regexp_replace(
+                    func.col("Last % Hike"), "%", "").alias("Salary Hike in %")]
             self.df.show(5)
 
             # ### Checking the total records in the PySpark Dataframe
@@ -25,16 +27,16 @@ class sparkTask(object):
             self.df = self.df.withColumn("Emp ID", self.df["Emp ID"].cast("int"))
             self.df = self.df.withColumn("Zip", self.df["Zip"].cast("int"))
             self.df = self.df.withColumn("Salary", self.df["Salary"].cast("int"))
-            self.df = (self.df.withColumn("Salary Hike", self.df["Salary Hike"].cast("int")))
+            self.df = (self.df.withColumn("Salary Hike in %", self.df["Salary Hike in %"].cast("int")))
             print(self.df.dtypes)
 
             # ### Checking if the changes have been made successfully
-            self.df.show()
+            self.df.show(5)
 
             # ### Checking the Schema
             self.df.printSchema()
 
-            return self.df
+            # return self.df
         except:
             print("Something went wrong in sparkDF()!")
 
@@ -43,16 +45,22 @@ class sparkTask(object):
         try:
             # ### Task 1: Count the number of employees in each County, Region and City
             print("No. of Employees Per County:")
-            task11 = df.groupBy("County").agg(func.countDistinct("Emp ID").alias('No. of Employees Per County'))
-            task11.show(5)
+            countyCount = df.agg(func.countDistinct("County").alias("Counties")).collect()
+            countyCount = countyCount[0].Counties
+            task11 = df.groupBy("County").count().sort("County")
+            task11.show(countyCount)
 
             print("No. of Employees Per Region:")
-            task12 = df.groupBy("Region").agg(func.countDistinct("Emp ID").alias('No. of Employees Per Region'))
-            task12.show(5)
+            regionCount = df.agg(func.countDistinct("Region").alias("Regions")).collect()
+            regionCount = regionCount[0].Regions
+            task12 = df.groupBy("Region").count().sort("Region")
+            task12.show(regionCount)
 
             print("No. of Employees Per City:")
-            task13 = df.groupBy("City").agg(func.countDistinct("Emp ID").alias('No. of Employees Per City'))
-            task13.show(5)
+            cityCount = df.agg(func.countDistinct("City").alias("Cities")).collect()
+            cityCount = cityCount[0].Cities
+            task13 = df.groupBy("City").count().sort("City")
+            task13.show(cityCount)
         except:
             print("Something went wrong in Task1!")
 
@@ -81,14 +89,14 @@ class sparkTask(object):
         try:
             # ### Task 4: Summerize the number of employee joined and hikes granted based on month
             print("Number of employee joined based on month:")
-            task41 = df.groupBy("Month Name of Joining").agg(
-                func.countDistinct("Emp ID").alias('No. of Employees Joined in Particular Month'))
+            task41 = df.groupBy("Month Name of Joining").count()
             task41.show()
 
             print("Number of employee joined based on hikes granted:")
-            task42 = df.groupBy("Month Name of Joining").agg(
-                func.countDistinct("Salary Hike").alias('No. of Hikes granted in Particular Month'))
-            task42.show()
+            hikesCount = df.agg(func.countDistinct("Month Name of Joining","Salary Hike in %").alias("Hikes_Per_Month")).collect()
+            hikesCount = hikesCount[0].Hikes_Per_Month
+            task42 = df.groupBy("Month Name of Joining", "Salary Hike in %").count().sort("Month Name of Joining")
+            task42.show(hikesCount)
         except:
             print("Something went wrong in Task4!")
 
@@ -135,12 +143,13 @@ class sparkTask(object):
             print("Something went wrong in run()!")
 
 
-filepath = "/home/ubuntu/Hr5m.csv"
-# ### Creating Spark Session
-spark = SparkSession.builder.appName('task').getOrCreate()
-print("SparkSession Started Successfully!")
-start = sparkTask()
-start.run()
-# ### Stopping the SparkSession
-spark.stop()
-print("SparkSession Stopped Successfully!")
+if __name__ == "__main__":
+    filepath = "/home/ubuntu/Hr5m.csv"
+    # ### Creating Spark Session
+    spark = SparkSession.builder.appName('task').getOrCreate()
+    print("SparkSession Started Successfully!")
+    start = sparkTask()
+    start.run()
+    # ### Stopping the SparkSession
+    spark.stop()
+    print("SparkSession Stopped Successfully!")
