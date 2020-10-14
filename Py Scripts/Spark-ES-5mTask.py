@@ -23,7 +23,7 @@ class sparkESTask(object):
         try:
             # ### Reading 5 million data CSV with Spark by loading the file
             self.df = spark.read.format("csv").option("header", "true").load(filepath).fillna(0)[
-                "Emp ID", "Month Name of Joining", "Last Name", "Gender", "E Mail", "SSN", "County", "State", "Region", "City", "Zip", "Salary", func.regexp_replace(
+                "Emp ID", "First Name", "Last Name", "Gender", "E Mail", "Month Name of Joining", "SSN", "County", "State", "Region", "City", "Zip", "Salary", func.regexp_replace(
                     func.col("Last % Hike"), "%", "").alias("Salary Hike")]
             self.df.show(5)
 
@@ -51,7 +51,7 @@ class sparkESTask(object):
 
             print("Sending data to Elasticsearch by PySpark...")
             time.sleep(1)
-            
+
             self.df.write.format(
                 "org.elasticsearch.spark.sql"
             ).option(
@@ -75,19 +75,19 @@ class sparkESTask(object):
         try:
             # ### Task 1: Count the number of employees in each County, Region and City
             print("No. of Employees Per County:")
-            county = es.search(index=name, size=0, body={"query": {"match_all": {}}, "aggs": {
-                "No. of Employees in per County": {"terms": {"field": "County.keyword"}}}})
-            pprint(county)
+            county = es.search(index="humans", size=0, body={"aggs": {"No. of Employees per County": {
+                "terms": {"field": "County.keyword", "size": 5, "order": {"_key": "asc"}}}}})
+            pprint(county["aggregations"]["No. of Employees per County"]["buckets"])
 
             print("No. of Employees Per Region:")
-            region = es.search(index=name, size=0, body={"query": {"match_all": {}}, "aggs": {
-                "No. of Employees per Region": {"terms": {"field": "Region.keyword"}}}})
-            pprint(region)
+            region = es.search(index="humans", size=0, body={"aggs": {
+                "No. of Employees per Region": {"terms": {"field": "Region.keyword", "order": {"_key": "asc"}}}}})
+            pprint(region["aggregations"]["No. of Employees per Region"]["buckets"])
 
             print("No. of Employees Per City:")
-            city = es.search(index=name, size=0, body={"query": {"match_all": {}}, "aggs": {
-                "No. of Employees per City": {"terms": {"field": "City.keyword"}}}})
-            pprint(city)
+            city = es.search(index="humans", size=0, body={"aggs": {"No. of Employees per City": {
+                "terms": {"field": "City.keyword", "size": 5, "order": {"_key": "asc"}}}}})
+            pprint(city["aggregations"]["No. of Employees per City"]["buckets"])
         except:
             print("Something went wrong in Task1!")
 
@@ -95,8 +95,8 @@ class sparkESTask(object):
         try:
             # ### Task 2: Generate employee summary
             print("Employee Summary:")
-            empSummary = es.search(index=name, size=5, body={"query": {"match_all": {}}})
-            pprint(empSummary)
+            empSummary = es.search(index="humans", size=5, body={"query": {"match_all": {}}})
+            pprint(empSummary["hits"]["hits"])
         except:
             print("Something went wrong in Task2!")
 
@@ -104,10 +104,9 @@ class sparkESTask(object):
         try:
             # ### Task 3: Generate employee summary and ordering by Gender and Salary
             print("Employee summary and ordering by Gender and Salary:")
-            empSummaryGS = es.search(index=name, size=3, body={"query": {"match_all": {}},
-                                                               "sort": [{"Gender.keyword": {"order": "asc"}},
-                                                                        {"Salary": {"order": "asc"}}]})
-            pprint(empSummaryGS)
+            empSummaryGS = es.search(index="humans", size=5, body={
+                "sort": [{"Gender.keyword": {"order": "asc"}}, {"Salary": {"order": "asc"}}]})
+            pprint(empSummaryGS["hits"]["hits"])
         except:
             print("Something went wrong in Task3!")
 
@@ -115,14 +114,15 @@ class sparkESTask(object):
         try:
             # ### Task 4: Summerize the number of employee joined and hikes granted based on month
             print("Number of employee joined based on month:")
-            empMonth = es.search(index=name, size=0, body={"query": {"match_all": {}}, "aggs": {
-                "No. of Employees joined in particular month": {"terms": {"field": "Month Name of Joining.keyword"}}}})
-            pprint(empMonth)
+            empMonth = es.search(index="humans", size=0, body={"aggs": {"No. of Employees joined in particular Month": {
+                "terms": {"field": "Month Name of Joining.keyword", "size": 12}}}})
+            pprint(empMonth["aggregations"]["No. of Employees joined in particular Month"]["buckets"])
 
             print("Number of employee joined based on hikes granted:")
-            empHike = es.search(index=name, size=0, body={"query": {"match_all": {}}, "aggs": {
-                "No. of Hikes granted per Month": {"cardinality": {"field": "Salary Hike"}}}})
-            pprint(empHike)
+            empHike = es.search(index="humans", size=0, body={"aggs": {
+                "Month": {"terms": {"field": "Month Name of Joining.keyword", "size": 12},
+                          "aggs": {"Hikes granted in this Month": {"terms": {"field": "Salary Hike"}}}}}})
+            pprint(empHike["aggregations"]["Month"]["buckets"])
         except:
             print("Something went wrong in Task4!")
 
@@ -130,9 +130,9 @@ class sparkESTask(object):
         try:
             # ### Task 5: Generate employee summary and ordering by Salary
             print("Employee summary and ordering by Salary:")
-            empSalary = es.search(index=name, size=5,
+            empSalary = es.search(index="humans", size=5,
                                   body={"query": {"match_all": {}}, "sort": [{"Salary": {"order": "asc"}}]})
-            pprint(empSalary)
+            pprint(empSalary["hits"]["hits"])
         except:
             print("Something went wrong in Task5!")
 
@@ -179,18 +179,19 @@ class sparkESTask(object):
             print("Something went wrong in run()!")
 
 
-filepath = "/home/ubuntu/Hr5m.csv"
-start = sparkESTask()
-start.connection()
-es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
-# ### Entering index name
-indexName = input("Enter the elasticsearch index name: ")
-# ### Creating Spark Session
-spark = SparkSession.builder.appName('task').getOrCreate()
-print("SparkSession Started Successfully!")
-start.run()
-# ### Stopping the SparkSession
-es.transport.close()
-print("Closed connection to Elasticsearch!")
-spark.stop()
-print("SparkSession Stopped Successfully!")
+if __name__ == "__main__":
+    filepath = "/home/ubuntu/Hr5m.csv"
+    start = sparkESTask()
+    start.connection()
+    es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
+    # ### Entering index name
+    indexName = input("Enter the elasticsearch index name: ")
+    # ### Creating Spark Session
+    spark = SparkSession.builder.appName('task').getOrCreate()
+    print("SparkSession Started Successfully!")
+    start.run()
+    # ### Stopping the SparkSession
+    es.transport.close()
+    print("Closed connection to Elasticsearch!")
+    spark.stop()
+    print("SparkSession Stopped Successfully!")
