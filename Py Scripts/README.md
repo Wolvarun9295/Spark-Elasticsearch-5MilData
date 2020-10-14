@@ -25,7 +25,5 @@ The below screenshots show the output of the tasks performed:
 <img src=https://github.com/Wolvarun9295/Spark-Elasticsearch-5MilData/blob/master/Screenshots/esT41.png></img><br/>
 **No. of Hikes granted per Month:**<br/>
 <img src=https://github.com/Wolvarun9295/Spark-Elasticsearch-5MilData/blob/master/Screenshots/esT42.png></img><br/>
-**Task 5:** Generate employee summary and ordering by Salary
+**Task 5:** Generate employee summary and ordering by Salary<br/>
 <img src=https://github.com/Wolvarun9295/Spark-Elasticsearch-5MilData/blob/master/Screenshots/esT5.png></img><br/>
-#
-## Resources
