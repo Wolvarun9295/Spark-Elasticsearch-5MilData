@@ -1,5 +1,8 @@
 # Running the task in Py Scripts
 The below screenshots show the output of the tasks performed:
+
+Running the Py Scripts will show up the following dialogue and ask choices to perform the tasks.
+<img src=https://github.com/Wolvarun9295/Spark-Elasticsearch-5MilData/blob/master/Screenshots/pyfile.png></img><br/>
 #
 ## Using PySpark:
 **Task 1: Count the number of employees in each County, Region and City**<br/>
