@@ -10,7 +10,7 @@ The below screenshots show the output of the tasks performed:
 #
 ## Using PySpark + Elasticsearch:
 **Task 1: Count the number of employees in each County, Region and City**<br/>
-**No. of Employees per County:**<br/>
+- **No. of Employees per County:**<br/>
 <img src=https://github.com/Wolvarun9295/Spark-Elasticsearch-5MilData/blob/master/Screenshots/esT11.png></img><br/>
 - **No. of Employees per Region:**<br/>
 <img src=https://github.com/Wolvarun9295/Spark-Elasticsearch-5MilData/blob/master/Screenshots/esT12.png></img><br/>
